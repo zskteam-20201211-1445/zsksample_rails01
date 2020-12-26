@@ -39,7 +39,7 @@ RSpec.describe '/users', type: :request do
     end
   end
   describe 'GET /edit' do
-    it 'newアクションへリクエストすると正常にリクエストが返ってくる' do
+    it 'editアクションへリクエストすると正常にリクエストが返ってくる' do
       get edit_user_path(@user)
       expect(response.status).to eq 200
     end
