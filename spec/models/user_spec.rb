@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   before do
     @user = FactoryBot.create(:user)
   end
@@ -14,22 +13,22 @@ RSpec.describe User, type: :model do
 
   describe '存在性の検証' do
     it '名前が存在すること' do
-      @user.name = " "
+      @user.name = ' '
       expect(@user).not_to be_valid
     end
     it 'メールアドレスが存在すること' do
-      @user.email = " "
+      @user.email = ' '
       expect(@user).not_to be_valid
     end
   end
 
   describe '入力値の長さの検証' do
     it '名前が50文字以内であること' do
-      @user.name = "a" * 51
+      @user.name = 'a' * 51
       expect(@user).not_to be_valid
     end
     it 'メールアドレスが255文字以内であること' do
-      @user.email = "a" * 244 + "@example.com"
+      @user.email = 'a' * 244 + '@example.com'
       expect(@user).not_to be_valid
     end
   end
@@ -53,11 +52,10 @@ RSpec.describe User, type: :model do
 
   describe 'email一意性の検証' do
     it '重複したメールアドレスが無効であること' do
-      FactoryBot.create(:user, email: "zskteam1211@example.com")
-      user = FactoryBot.build(:user, email: "ZSKTeam1211@example.com" )
+      FactoryBot.create(:user, email: 'zskteam1211@example.com')
+      user = FactoryBot.build(:user, email: 'ZSKTeam1211@example.com')
       user.valid?
-      expect(user.errors[:email]).to include("has already been taken")
+      expect(user.errors[:email]).to include('has already been taken')
     end
   end
-
 end
