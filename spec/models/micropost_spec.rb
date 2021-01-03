@@ -29,6 +29,5 @@ RSpec.describe Micropost, type: :model do
     @micropost.valid?
     expect(@micropost.errors.full_messages).to include("User must exist")
   end
-  # expect(@user).not_to be_valid
   end
 end
