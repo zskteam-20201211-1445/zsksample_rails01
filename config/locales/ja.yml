@@ -1,0 +1,8 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       ame: 名前
+     micropost:
+       user: ユーザー 
+       content: テキスト
