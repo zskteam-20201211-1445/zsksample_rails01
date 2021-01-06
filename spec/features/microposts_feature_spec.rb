@@ -128,7 +128,7 @@ RSpec.feature '/micropost#new', type: :feature do
           fill_in 'Content', with: @micropost.content
           fill_in 'User', with: @micropost.user_id
           attach_file 'Image', @invalid_image
-          click_on '登録'
+          click_on '登録する'
 
           expect(page).to have_content 'は5MB以内にしてください'
         end
