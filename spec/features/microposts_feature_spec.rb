@@ -83,10 +83,9 @@ RSpec.feature '/micropost#new', type: :feature do
 
         expect(-> {
           fill_in 'Content', with: @micropost.content
-          fill_in 'User', with: @micropost.user_id
-          click_on '登録する'
           # select(value = @micropost.user_id.to_s, from: 'User')
           select(@micropost.user_id.to_s, from: 'User')
+          click_on '登録する'
         }).to change(Micropost, :count).by(1)
 
         expect(current_path).to eq micropost_path(Micropost.last)
