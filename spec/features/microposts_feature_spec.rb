@@ -143,7 +143,7 @@ RSpec.feature '/micropost#new', type: :feature do
           files = %w[file1.zip file2.pdf file3.rtf]
           @invalid_file = "spec/fixtures/files/#{files[rand(0..2)]}"
         end
-        scenario '投稿が保存されない事' do 
+        scenario '投稿が保存されない事' do
           visit new_micropost_path
 
           fill_in 'Content', with: @micropost.content
