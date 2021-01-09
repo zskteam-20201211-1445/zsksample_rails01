@@ -1,19 +1,25 @@
 class MicropostsController < ApplicationController
   before_action :set_micropost, only: %i[show edit update destroy]
 
+  PER = 5
   # GET /microposts
   # GET /microposts.json
   def index
-    @microposts = Micropost.all
+    @microposts = Micropost.all.page(params[:page]).per(PER)
   end
 
   # GET /microposts/1
   # GET /microposts/1.json
-  def show; end
+
+  def show
+    @user = User.find(@micropost.user_id)
+  end
 
   # GET /microposts/new
   def new
     @micropost = Micropost.new
+    @user = User.new
+    @users = User.all
   end
 
   # GET /microposts/1/edit
@@ -23,6 +29,7 @@ class MicropostsController < ApplicationController
   # POST /microposts.json
   def create
     @micropost = Micropost.new(micropost_params)
+    @users = User.all
 
     respond_to do |format|
       if @micropost.save
@@ -68,6 +75,6 @@ class MicropostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def micropost_params
-    params.require(:micropost).permit(:content, :user_id)
+    params.require(:micropost).permit(:content, :user_id, :image)
   end
 end

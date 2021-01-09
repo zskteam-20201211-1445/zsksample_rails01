@@ -12,13 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :content %>
+    <%= form.label :content,"Content" %>
     <%= form.text_area :content %>
   </div>
 
+    <div class="field">
+      <%= form.label :user_id %>
+      <% users = User.pluck(:name, :id) %>
+      <% users.each do |user| %>
+        <% user[0] = "#{user[1]}. #{user[0]}" %>
+      <% end %>
+      <%= form.select :user_id, users, { prompt: '選択してください' } %>
+    </div>
+
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+    <%= form.label :image %>
+    <%= form.file_field :image, accept: '.jpeg, .jpg, .gif, .png, .bmp' %>
   </div>
 
   <div class="actions">

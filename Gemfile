@@ -23,13 +23,17 @@ gem 'jbuilder', '2.10.0'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '1.4.6', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+
+  gem 'database_cleaner'
+
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails', '4.0.1'
@@ -57,3 +61,8 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+# paginationを作成するために追加
+gem 'kaminari'
+# エラーメッセージを日本語にする
+gem 'rails-i18n'
