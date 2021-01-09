@@ -6,7 +6,6 @@ class MicropostsController < ApplicationController
   # GET /microposts.json
   def index
     @microposts = Micropost.all.page(params[:page]).per(PER)
-
   end
 
   # GET /microposts/1
@@ -15,7 +14,6 @@ class MicropostsController < ApplicationController
   def show
     @user = User.find(@micropost.user_id)
   end
-
 
   # GET /microposts/new
   def new
